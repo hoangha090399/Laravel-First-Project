@@ -21,10 +21,11 @@ class RoleFactory extends Factory
      */
     public function definition()
     {
+        $input = array("admin", "editor", "viewer");
         return [
-            //
+
             'name' => $input[array_rand($input,1)],
-				  'description' => $this->faker->paragraph(random_int(3, 5))
+            'description' => $this->faker->paragraph(random_int(3, 5))
         ];
     }
 }

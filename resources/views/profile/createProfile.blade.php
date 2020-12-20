@@ -70,26 +70,27 @@
         <img src={{ asset('assets/img/brand/profile.png') }} alt="computer icon" />
     </div>
     <div id="form_right">
+    <x-package-alert type="danger"  message=". Nhớ Thêm Đầy Đủ Ô nha!!!"/>
     <h1>PROFILE CREATE FORM</h1>
         <form class="profile" action="{{ route('profiles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <div class="form-group" >
-            <input type="text" name="full_name" class="form-control form-control-user" id="full_name" placeholder="Full Name">
+            Full Name:<input type="text" name="full_name" class="form-control form-control-user" id="full_name" placeholder="Full Name">
         </div>
         <div class="form-group">
-            <input type="text" name="address" class="form-control form-control-user" id="address" placeholder="Address">
+            Address: <input type="text" name="address" class="form-control form-control-user" id="address" placeholder="Address">
         </div>
         
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="date" class="form-control form-control-user" name="birthday" id="birthday" placeholder="Birthday">
+                Birthday: <input type="date" class="form-control form-control-user" name="birthday" id="birthday" placeholder="Birthday">
             </div>
         </div>
 
         <div class="form-group">
             <div class="custom-file">
-                <input type="file" class="custom-file-input " id="avatar" name="avatar" >
+                Avatar: <input type="file" class="custom-file-input " id="avatar" name="avatar" >
                 <label for="avatar" class="custom-file-label">{{$profile->avatar ?? ""}}</label>
             </div>
         </div>

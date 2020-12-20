@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Hash;
 use DB;
 
 use App\Models\User;
@@ -17,8 +18,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->get();
-        return View('user.index',['users'=>$users]);
+        $users = User::all();
+        // $users = DB::table('users')->get();
+        return View('user.userlist',['users'=>$users]);
     }
 
     /**
@@ -45,12 +47,13 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
-        
+        $user->role_id = $request->input('role_id');
         $affected = DB::table('users')->insert(
             [
                 "name" => $user->name,
                 "email" => $user->email,
-                "password" => $user->password,
+                'password' => Hash::make($request['password']),
+                "role_id" => $user->role_id
                 
             ]
         );

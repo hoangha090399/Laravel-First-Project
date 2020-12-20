@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 @section('content')
 
@@ -19,9 +19,9 @@
 				<tbody>
 				@foreach($profiles as $profile)
 				<tr>
-					<td><a href="/profiles/{{$profile->id}}">{{$profile->full_name}}</a></td>
+					<td><a href="/profiles/{{$profile->user_id}}">{{$profile->full_name}}</a></td>
 
-					<td><a href="/profiles/{{$profile->id}}/edit" class="btn btn-primary">Edit</a></td>
+					<td><a href="/profiles/{{$profile->user_id ?? ""}}/edit" class="btn btn-primary">Edit</a></td>
 				</tr>
 				@endforeach
 				</tbody>

@@ -25,8 +25,9 @@ class ArticleFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,//lấy danh sách user rồi chọn ngẫu nhiên id để thêm vào bảng articles
+            'status' => $this->faker->realText($maxNbChars = 10, $indexSize = 2),
             'title' => $this->faker->sentence,
-            'body' => $this->faker->paragraph(random_int(3, 5))
+            'body' => $this->faker->paragraph(random_int(1, 2))
         ];
     }
 }

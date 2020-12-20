@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <img src={{ asset('assets/img/boss.jpg') }}>
+  <!-- <img src={{ asset('assets/img/boss.jpg') }}> -->
 @endsection
 <!-- <div class="main-content" id="panel">
     <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">

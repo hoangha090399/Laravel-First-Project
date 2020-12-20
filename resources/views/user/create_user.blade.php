@@ -70,18 +70,26 @@
         <img src={{ asset('assets/img/brand/user.png') }} alt="computer icon" />
     </div>
     <div id="form_right">
+    <x-package-alert type="danger"  message=". Nhớ Thêm Đầy Đủ Ô nha!!!"/>
     <h1>USER CREATE FORM</h1>
         <form class="user" action="/users " method="POST">
         @csrf
         
         <div class="form-group" >
-            <input type="text" name="name" class="form-control form-control-user" id="name" placeholder="Name">
+            Name: <input type="text" name="name" class="form-control form-control-user" id="name" placeholder="Name">
         </div>
         <div class="form-group">
-            <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="Email@...com">
+            Email: <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="Email@...com">
         </div>
         <div class="form-group">
-            <input type="text" name="password" class="form-control form-control-user" id="password" placeholder="Password">
+            Password: <input type="text" name="password" class="form-control form-control-user" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            Permission: <select name="role_id" class="form-control form-control-user" id="role_id">
+            <option value="1">Admin</option>
+            <option value="2">Editor</option>
+            <option value="3">Viewer</option>
+            </select>
         </div>
         
         <input type="submit" class="btn btn-primary" value="Create">

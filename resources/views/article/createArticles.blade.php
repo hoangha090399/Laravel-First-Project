@@ -65,33 +65,40 @@
     }
 </style>
 <body>
-<div id="form_wrapper">
-    <div id="form_left">
-        <img src={{ asset('assets/img/brand/products.jpg') }} alt="computer icon" />
-    </div>
-    <div id="form_right">
-    <x-package-alert type="danger"  message=". Nhớ Thêm Đầy Đủ Ô nha!!!"/>
-    <h1>PRODUCT CREATE FORM</h1>
-        <form class="tag" action="/tags " method="POST">
+    <div id="form_wrapper">
+        <div id="form_left">
+            <img src={{ asset('assets/img/brand/user.png') }} alt="computer icon" />
+        </div>
+        <div id="form_right">
+        <h1>ARTICLE CREATE FORM</h1>
+            <form class="user" action="/articles " method="POST">
             @csrf
             
             <div class="form-group" >
-                <input type="text" name="tag" class="form-control form-control-user" id="tag" placeholder="Product Name">
+                Title: <input type="text" name="title" class="form-control form-control-user" id="title" placeholder="Title...">
             </div>
-
-            <div class="form-group" >
-                <input type="text" name="status" class="form-control form-control-user" id="status" placeholder="Status">
+            <div class="form-group">
+                User ID:<input type="number" name="user_id" class="form-control form-control-user" id="user_id" placeholder="User Id...">
             </div>
-
-            <div class="form-group" >
-                <input type="text" name="price" class="form-control form-control-user" id="price" placeholder="Price">
+            <div class="form-group">
+                <input type="text" name="body" class="form-control form-control-user" id="body" placeholder="Body">
             </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="date" class="form-control form-control-user" name="created_at" id="created_at" placeholder="Create at day">
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <input type="number" name="article_id" class="form-control form-control-user" id="article_id" placeholder="Article Id...">
+            </div>
+            <div class="form-group">
+                <input type="number" name="tag_id" class="form-control form-control-user" id="tag_id" placeholder="Tag Id...">
+            </div> -->
             
             <input type="submit" class="btn btn-primary" value="Create">
             <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
-        </form>
+            </form>
+            </div>
     </div>
-</div>
 </body>
-
 @endsection

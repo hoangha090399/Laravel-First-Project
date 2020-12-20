@@ -67,27 +67,40 @@
 <body>
 <div id="form_wrapper">
     <div id="form_left">
-        <img src={{ asset('assets/img/brand/products.jpg') }} alt="computer icon" />
+        <img src={{ asset('assets/img/brand/order2.png') }} alt="computer icon" />
     </div>
     <div id="form_right">
-    <x-package-alert type="danger"  message=". Nhớ Thêm Đầy Đủ Ô nha!!!"/>
-    <h1>PRODUCT CREATE FORM</h1>
-        <form class="tag" action="/tags " method="POST">
+    <h1>ORDER EDIT FORM</h1>
+        <form class="article" action="{{ route('articles.update',['article' => $article->id]) }}" method="POST">
             @csrf
+            @method('PUT')
             
             <div class="form-group" >
-                <input type="text" name="tag" class="form-control form-control-user" id="tag" placeholder="Product Name">
+                User ID: <input type="text" name="user_id" class="form-control form-control-user" id="user_id" placeholder="User ID" value="{{$article->user_id}}">
             </div>
 
             <div class="form-group" >
-                <input type="text" name="status" class="form-control form-control-user" id="status" placeholder="Status">
+                Title: <input type="text" name="title" class="form-control form-control-user" id="title" placeholder="Title" value="{{$article->title}}">
             </div>
 
             <div class="form-group" >
-                <input type="text" name="price" class="form-control form-control-user" id="price" placeholder="Price">
+                Body: <input type="text" name="body" class="form-control form-control-user" id="body" placeholder="Body" value="{{$article->body}}">
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    Created At: <input type="date" class="form-control form-control-user" name="created_at" id="created_at" placeholder="Created at" value="{{$article->created_at}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <select name="status" id="status">
+                    <option value="Delivered">Delivered</option>
+                    <option value="Not delivery">Not delivery</option>
+                </select>
             </div>
             
-            <input type="submit" class="btn btn-primary" value="Create">
+            <input type="submit" class="btn btn-primary" value="Update">
             <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
         </form>
     </div>

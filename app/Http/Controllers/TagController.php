@@ -73,6 +73,8 @@ class TagController extends Controller
     public function edit($id)
     {
         //
+        $tag =  DB::table('tags')->where('id',$id)->first();
+			return View('tag.edit_tag',['tag'=>$tag]);
     }
 
     /**
@@ -85,6 +87,17 @@ class TagController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tag = DB::table('tags')->find($id);
+        $tag->tag = $request->input('tag');
+        $tag->status = $request->input('status');
+        $tag->price = $request->input('price');
+			$affected = DB::table('tags')
+				->where('id', $id)
+				->update(['tag' =>  $tag->tag,
+							'status' =>  $tag->status,
+							'price' =>  $tag->price
+					]);
+			return redirect('/tags');
     }
 
     /**
@@ -96,5 +109,7 @@ class TagController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('tags')->where('id', $id)->delete();
+        return redirect('/tags'); 
     }
 }

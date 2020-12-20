@@ -2,7 +2,7 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
+        <a class="navbar-brand" href="http://127.0.0.1:8000">
           <img src={{ asset('assets/img/brand/logo2.png') }} class="navbar-brand-img" alt="...">
         </a>
       </div>
@@ -11,6 +11,12 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/home">
+                <i class="ni ni-key-25 text-info"></i>
+                <span class="nav-link-text">Home Login</span>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/users">
                 <i class="ni ni-badge text-purple"></i>
@@ -27,14 +33,14 @@
             <li class="nav-item">
               <a class="nav-link" href="/articles">
                 <i class="ni ni-collection text-red"></i>
-                <span class="nav-link-text">Article</span>
+                <span class="nav-link-text">Order</span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="/tags">
                 <i class="ni ni-books text-yellow"></i>
-                <span class="nav-link-text">Tag</span>
+                <span class="nav-link-text">Product</span>
               </a>
             </li>
 
@@ -68,7 +74,7 @@
                 <span class="nav-link-text">Tables</span>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="examples/login.html">
                 <i class="ni ni-key-25 text-info"></i>
                 <span class="nav-link-text">Login</span>
@@ -79,7 +85,7 @@
                 <i class="ni ni-circle-08 text-pink"></i>
                 <span class="nav-link-text">Register</span>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="examples/upgrade.html">
                 <i class="ni ni-send text-dark"></i>

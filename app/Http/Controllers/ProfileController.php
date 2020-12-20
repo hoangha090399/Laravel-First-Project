@@ -52,7 +52,7 @@ class ProfileController extends Controller
                 "user_id" =>  $profile->user_id,
                 "full_name" => $profile->full_name,
                 "address" => $profile->address,
-                "avatar" => 'https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg|mimes:jpg,jpeg,png,xlx,xls,pdf|max:2048',
+                "avatar" => 'https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg',
                 "birthday" => $profile->birthday
             ]
         );
@@ -78,21 +78,10 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
-        $user =  DB::table('users')->where('id',$id)->get();
-        if(is_null($id))
-        {
-            $message = "Create profile?";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            return View('profile.createProfile');
-        }
-        else
-        {
-            $user =  DB::table('users')->where('id',$id)->first();
-            $profile =  DB::table('profiles')->where('user_id',$id)->first();
-			return View('profile.show',['profile'=>$profile],['user'=>$user]);
-        }
-        
+        // 
+        $user =  DB::table('users')->where('id',$id)->first();
+        $profile =  DB::table('profiles')->where('user_id',$id)->first();
+        return View('profile.show',['profile'=>$profile],['user'=>$user]);
     }
 
     /**
@@ -105,7 +94,19 @@ class ProfileController extends Controller
     {
         //
         $profile =  DB::table('profiles')->where('user_id',$id)->first();
+        if($profile)
+        {
+            $profile =  DB::table('profiles')->where('user_id',$id)->first();
 			return View('profile.edit',['profile'=>$profile]);
+            
+        }
+        else
+        {
+            $message = "Create profile?";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            return View('profile.createProfile');
+        }
+        
     }
 
     /**
@@ -139,7 +140,7 @@ class ProfileController extends Controller
         }
 
         $profile->save(); //lưu
-        return redirect('/profiles')
+        return redirect('/users')
                     ->with('success', 'Profile1 has updated.')//lưu thông báo kèm theo để hiển thị trên view
                     ->with('file', $fileName);
 		

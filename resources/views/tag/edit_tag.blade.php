@@ -67,25 +67,24 @@
 <body>
 <div id="form_wrapper">
     <div id="form_left">
-        <img src={{ asset('assets/img/brand/tag.png') }} alt="computer icon" />
+        <img src={{ asset('assets/img/brand/products.jpg') }} alt="computer icon" />
     </div>
     <div id="form_right">
-    <h1>TAG EDIT FORM</h1>
-        <form class="tag" action="/tags " method="POST">
+    <h1>PRODUCT EDIT FORM</h1>
+        <form class="tag" action="{{ route('tags.update',['tag' => $tag->id]) }}" method="POST">
             @csrf
+            @method('PUT')
             
             <div class="form-group" >
-                <input type="text" name="tag" class="form-control form-control-user" id="tag" placeholder="Tag Name">
+                Product Name:<input type="text" name="tag" class="form-control form-control-user" id="tag" placeholder="Tag Name" value="{{$tag->tag}}">
             </div>
 
             <div class="form-group" >
-                <select name="status" class="form-control input-inline" id="status" style="width: 200px">
-                    <option value="Stocking">Con hang</option>
-                    <option value="Out of stock">Het hang</option>
-                </select>
+                Quantity: <input type="text" name="status" class="form-control form-control-user" id="status" placeholder="So luong" value="{{$tag->status}}">
             </div>
+
             <div class="form-group" >
-                <input type="text" name="price" class="form-control form-control-user" id="price" placeholder="Price">
+                Price: <input type="text" name="price" class="form-control form-control-user" id="price" placeholder="Price" value="{{$tag->price}}">
             </div>
             
             <input type="submit" class="btn btn-primary" value="Update">

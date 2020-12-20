@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,28 +45,32 @@ Route::get('/create_tag', function () {
     return view('tag.create_tag');
 });
 
-Route::resource('users', UserController::class);
-Route::get('/users', function (){
+Route::get('/createArticles', function () {
 
-    $users = DB::table('users')->get();
-    return view('user.userlist',  ['users' => $users]);
+    return view('article.createArticles');
 });
 
+Route::get('/showArticle', function () {
 
-
-Route::resource('profiles', ProfileController::class);
-Route::get('/profiles', function (){
-
-    $profiles = DB::table('profiles')->get();
-    return view('user.index',  ['profiles' => $profiles]);
+    return view('article.showArticle');
 });
 
-Route::resource('articles', ArticleController::class);
-
-Route::resource('tags', TagController::class);
+Route::resource('users', UserController::class)->middleware(['auth','role:admin, editor']);
 
 
+
+Route::resource('profiles', ProfileController::class)->middleware(['auth','role:admin']);
+
+
+Route::resource('articles', ArticleController::class)->middleware(['auth','role:admin,viewer']);
+
+Route::resource('tags', TagController::class)->middleware(['auth','role:viewer,admin']);
+
+Route::get('/getData/{id}', 'SearchController@getData')->name('getData');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// ->middleware(['auth','role:editor'])

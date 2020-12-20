@@ -14,7 +14,7 @@
 			<span>Search</span>
 		</button>
 	</form>
-	<h2 align="right"><a href="/create_user" class="btn btn-primary">Create User</a></h2>
+	<h2 align="right"><a href="/create_user" class="btn btn-primary">Add User</a></h2>
 	
 		<div class="table-responsive">
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -45,7 +45,7 @@
 									@method('DELETE')
 								
 									<a href="/profiles/{{$user->id}}" type="submit" class="btn btn-primary">View Profile</a>
-									<a href="/profiles/createProfile/{{$user->id}}" class="btn btn-primary">Add Profile</a>
+									
 									<input type="submit" onclick="return confirm('Are you sure DELETE this profile')" class="btn btn-primary" value="Delete">
 								</form>
 							</td>

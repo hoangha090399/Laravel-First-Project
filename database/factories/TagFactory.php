@@ -23,7 +23,7 @@ class TagFactory extends Factory
     {
         return [
             'tag' => $this->faker->word,
-            'status' => $this->faker->word,
+            'status' => $this->faker->numberBetween($min = 1, $max = 50),
             'price' => $this->faker->numberBetween($min = 1000, $max = 9000)
         ];
     }
